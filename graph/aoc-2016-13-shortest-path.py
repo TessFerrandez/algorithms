@@ -15,7 +15,6 @@ State:          Square (x, y)
 Target:         distance > 50
 '''
 from collections import deque
-from typing import Set, Tuple, Dict, List, Deque
 
 
 EMPTY = 0
