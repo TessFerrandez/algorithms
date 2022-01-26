@@ -46,9 +46,6 @@ Minimum spanning tree (MST):
     if not - include it
 3. Repeat #2 until we have V-1 edges (V = # vertices/nodes)
 '''
-from collections import defaultdict
-
-
 class Graph:
     def __init__(self, vertices) -> None:
         self.V = vertices

@@ -3,8 +3,7 @@ You are a professional robber planning to rob houses along a street. Each house 
 
 Given an integer array nums representing the amount of money of each house, return the maximum amount of money you can rob tonight without alerting the police.
 '''
-from typing import List, Tuple
-from functools import lru_cache
+from typing import List
 
 
 class Solution:
@@ -32,7 +31,6 @@ class Solution:
 
         return rob_recursive(nums, len(nums) - 1)
 
-
     # iterative + memo
     def rob3(self, nums: List[int]) -> int:
         if len(nums) == 0:
@@ -48,7 +46,6 @@ class Solution:
             cache[i + 1] = max(cache[i - 1] + num, cache[i])
 
         return cache[len(nums)]
-
 
     # iterative + memo (less space)
     def rob(self, nums: List[int]) -> int:

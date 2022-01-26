@@ -38,7 +38,6 @@ class Solution:
 
         return -1
 
-
     # highly optimized O(n) time O(1) space
     def canCompleteCircuit(self, gas: List[int], cost: List[int]) -> int:
         # if the sum of the gas - sum of the cost we can never make it

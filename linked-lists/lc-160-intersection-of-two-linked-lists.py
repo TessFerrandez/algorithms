@@ -23,6 +23,10 @@ So the swap erases the length diff
 If we reach the end without matching nodes
 we just return the end (None)
 '''
+from typing import Optional
+from ListNode import ListNode
+
+
 class Solution:
     def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> Optional[ListNode]:
         p1, p2 = headA, headB

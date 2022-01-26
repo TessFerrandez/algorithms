@@ -1,4 +1,4 @@
-from typing import List, Optional
+from typing import Optional
 from TreeNode import TreeNode, create_btree, arr_from_btree
 
 

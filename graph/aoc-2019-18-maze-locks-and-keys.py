@@ -128,7 +128,7 @@ def parse_maze(raw_map, part2=False):
     if part2:
         mid_y, mid_x = (len(rows) - 1) // 2, (len(rows[0]) - 1) // 2
         rows[mid_y - 1][mid_x - 1: mid_x + 2] = "@#@"
-        rows[mid_y][mid_x - 1: mid_x + 2]     = "###"
+        rows[mid_y][mid_x - 1: mid_x + 2] = "###"
         rows[mid_y + 1][mid_x - 1: mid_x + 2] = "@#@"
 
     for y, row in enumerate(rows):
@@ -270,7 +270,7 @@ raw_map = '''#############
 #o#m..#i#jk.#
 #############'''
 
-# raw_map = '''########################
+raw_map2 = '''########################
 #...............b.C.D.f#
 #.######################
 #.....@.a.B.c.d.A.e.F.g#

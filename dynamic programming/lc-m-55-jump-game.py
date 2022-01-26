@@ -29,7 +29,6 @@ class Solution:
 
         return dp[0]
 
-
     def canJump(self, nums: List[int]) -> bool:
         '''
         O(n) solution -- keep track of the smallest index that can jump to the end

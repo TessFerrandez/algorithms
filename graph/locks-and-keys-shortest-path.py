@@ -60,7 +60,7 @@ def parse_grid(raw_input):
         for x, ch in enumerate(line):
             if ch == "@":
                 ch = "."
-            grid[x + y*1j] = ch
+            grid[x + y * 1j] = ch
 
     return grid
 

@@ -31,6 +31,6 @@ class Solution:
 
 
 solution = Solution()
-assert solution.checkRecord('PPALLP') == True
-assert solution.checkRecord('PPALLL') == False
-assert solution.checkRecord('PPALLAP') == False
+assert solution.checkRecord('PPALLP')
+assert solution.checkRecord('PPALLL')
+assert not solution.checkRecord('PPALLAP')

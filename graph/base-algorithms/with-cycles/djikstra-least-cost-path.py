@@ -43,4 +43,3 @@ graph = {
 costs, previous = djikstra(graph, 'A')
 print(costs)
 print(previous)
-

@@ -7,4 +7,3 @@ class Solution:
 
 solution = Solution()
 assert solution.reverseWords("Let's take LeetCode contest") == "s'teL ekat edoCteeL tsetnoc"
-

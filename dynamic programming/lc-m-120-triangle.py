@@ -33,5 +33,5 @@ class Solution:
 
 
 solution = Solution()
-assert solution.minimumTotal([[2],[3,4],[6,5,7],[4,1,8,3]]) == 11
+assert solution.minimumTotal([[2], [3, 4],[6, 5, 7],[4, 1, 8, 3]]) == 11
 assert solution.minimumTotal([[-10]]) == -10

@@ -31,4 +31,4 @@ ll = ll_from_array_with_cycle([1, 2], 0)
 assert solution.detectCycle(ll).val == 1
 
 ll = ll_from_array([1])
-assert solution.detectCycle(ll) == None
+assert solution.detectCycle(ll) is None

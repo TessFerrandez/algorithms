@@ -2,8 +2,6 @@
 https://www.geeksforgeeks.org/job-sequencing-problem/
 '''
 def schedule_jobs1(jobs, t):
-    n = len(jobs)
-
     # sort jobs according
     # to decreasing order of profit
     jobs.sort(key=lambda k: k[2])

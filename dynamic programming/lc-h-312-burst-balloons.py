@@ -9,9 +9,6 @@ then treat it as if there is a balloon with a 1 painted on it.
 
 Return the maximum coins you can collect by bursting the balloons wisely.
 '''
-from typing import List
-
-
 class Solution:
     def maxCoins(self, iNums):
         nums = [1] + [i for i in iNums if i > 0] + [1]

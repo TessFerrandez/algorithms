@@ -15,6 +15,7 @@ class Solution:
     # A positive means Alice wins, negative means Bob wins
     def stoneGame1(self, piles: List[int]) -> bool:
         memo = {}
+
         def dp(start, end) -> int:
             if start > end:
                 return 0

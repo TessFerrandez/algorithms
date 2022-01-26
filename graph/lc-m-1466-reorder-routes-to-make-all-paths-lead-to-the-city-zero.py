@@ -9,7 +9,6 @@ Your task consists of reorienting some roads such that each city can visit the c
 
 It's guaranteed that each city can reach city 0 after reorder.
 '''
-from multiprocessing import connection
 from typing import List
 from collections import defaultdict
 

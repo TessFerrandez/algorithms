@@ -1,6 +1,3 @@
-from unittest import result
-
-
 '''
 You have n dice and each die has k faces numbered from 1 to k.
 

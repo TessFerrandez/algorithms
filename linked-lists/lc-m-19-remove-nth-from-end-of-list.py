@@ -1,6 +1,6 @@
 from typing import Optional
 from ListNode import ListNode, array_from_ll, ll_from_array
-from copy import copy
+
 
 class Solution:
     def removeNthFromEnd2(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
@@ -22,7 +22,6 @@ class Solution:
             current.next = current.next.next
 
         return head
-
 
     def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
         current = head

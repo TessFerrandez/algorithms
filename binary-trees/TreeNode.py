@@ -9,14 +9,14 @@ class TreeNode:
         self.right = right
 
 
-def create_btree(data: List[int], index: int=0) -> Optional[TreeNode]:
+def create_btree(data: List[Optional[int]], index: int = 0) -> Optional[TreeNode]:
     pNode = None
     if index < len(data):
-        if data[index] == None:
+        if data[index] is None:
             return
         pNode = TreeNode(data[index])
-        pNode.left = create_btree(data, 2 * index + 1) # [1, 3, 7, 15, ...]
-        pNode.right = create_btree(data, 2 * index + 2) # [2, 5, 12, 25, ...]
+        pNode.left = create_btree(data, 2 * index + 1)      # [1, 3, 7, 15, ...]
+        pNode.right = create_btree(data, 2 * index + 2)     # [2, 5, 12, 25, ...]
     return pNode
 
 

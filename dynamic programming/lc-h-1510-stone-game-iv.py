@@ -16,7 +16,7 @@ class Solution:
                 i = 1
                 memo[n] = False
                 while i * i <= n:
-                    if dp(n - i*i) == False:
+                    if dp(n - i * i) == False:
                         memo[n] = True
                         break
                     i += 1

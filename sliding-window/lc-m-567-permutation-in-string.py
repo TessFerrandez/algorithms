@@ -43,7 +43,6 @@ class Solution:
 
         return False
 
-
     # using array
     def checkInclusion(self, s1: str, s2: str) -> bool:
         s1_len, s2_len = len(s1), len(s2)

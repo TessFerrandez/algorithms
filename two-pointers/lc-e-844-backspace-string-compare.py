@@ -1,5 +1,3 @@
-'''
-'''
 class Solution:
     def backspaceCompare(self, s: str, t: str) -> bool:
         def backspace(original) -> str:
@@ -15,6 +13,6 @@ class Solution:
 
 
 solution = Solution()
-assert solution.backspaceCompare("ab#c", "ad#c") == True
-assert solution.backspaceCompare("ab##", "c#d#") == True
-assert solution.backspaceCompare("a#c", "b") == False
+assert solution.backspaceCompare("ab#c", "ad#c")
+assert solution.backspaceCompare("ab##", "c#d#")
+assert not solution.backspaceCompare("a#c", "b")

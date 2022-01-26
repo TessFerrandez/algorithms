@@ -14,4 +14,3 @@ solution = Solution()
 assert solution.addDigits(38) == 2
 assert solution.addDigits(9) == 9
 assert solution.addDigits(0) == 0
-

@@ -5,7 +5,7 @@ from collections import deque
 
 class Solution:
     def connect(self, root: Optional[Node]) -> Optional[Node]:
-        if root == None:
+        if root is None:
             return root
 
         i, n = 0, 0

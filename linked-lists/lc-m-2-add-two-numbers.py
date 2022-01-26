@@ -1,4 +1,4 @@
-from typing import List, Optional
+from typing import Optional
 from ListNode import ListNode, ll_from_array, array_from_ll
 
 
@@ -45,4 +45,3 @@ solution = Solution()
 assert array_from_ll(solution.addTwoNumbers(ll_from_array([2, 4, 3]), ll_from_array([5, 6, 4]))) == [7, 0, 8]
 assert array_from_ll(solution.addTwoNumbers(ll_from_array([0]), ll_from_array([0]))) == [0]
 assert array_from_ll(solution.addTwoNumbers(ll_from_array([9,9,9,9,9,9,9]), ll_from_array([9,9,9,9]))) == [8,9,9,9,0,0,0,1]
-

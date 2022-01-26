@@ -34,7 +34,6 @@ class Solution:
 
         return num_ways
 
-
     def numDecodings(self, s: str) -> int:
         if len(s) == 0:
             return 0

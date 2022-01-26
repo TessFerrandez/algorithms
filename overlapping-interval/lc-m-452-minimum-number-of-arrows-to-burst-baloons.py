@@ -16,7 +16,6 @@ Solution:
 Since we don't need to know where to shoot - we can skip keeping track of the overlaps, we can just discard them
 '''
 from typing import List
-from collections import deque
 
 
 class Solution:

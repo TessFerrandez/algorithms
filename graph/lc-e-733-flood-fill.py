@@ -54,6 +54,6 @@ class Solution:
 
 
 solution = Solution()
-assert solution.floodFill([[1, 1, 1], [1, 1, 0], [1, 0 ,1]], 1, 1, 2) == [[2, 2, 2], [2, 2, 0], [2, 0, 1]]
+assert solution.floodFill([[1, 1, 1], [1, 1, 0], [1, 0, 1]], 1, 1, 2) == [[2, 2, 2], [2, 2, 0], [2, 0, 1]]
 assert solution.floodFill([[0, 0, 0], [0, 0, 0]], 0, 0, 2) == [[2, 2, 2], [2, 2, 2]]
 assert solution.floodFill([[0, 0, 0], [0, 1, 1]], 1, 1, 1) == [[0, 0, 0], [0, 1, 1]]

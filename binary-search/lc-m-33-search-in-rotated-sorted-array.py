@@ -27,7 +27,7 @@ class Solution:
                 rotate_pos = i
                 break
 
-        low, high = 0, n -1
+        low, high = 0, n - 1
         while low <= high:
             mid = (high - low) // 2 + low
             if nums[mid] == target:

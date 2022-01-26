@@ -7,7 +7,8 @@ from typing import List
 from collections import defaultdict
 
 class Solution:
-    # takes too long
+    # takes too long - complexity 11
+    # noqa: C901
     def isRectangleCover1(self, rectangles: List[List[int]]) -> bool:
         def overlaps(rect1, rect2):
             # if one of the rects are a line, we don't have overlap
@@ -49,7 +50,7 @@ class Solution:
 
         return True
 
-    def isRectangleCover(self, rectangles: List[List[int]]) -> bool:
+    def isRectangleCover2(self, rectangles: List[List[int]]) -> bool:
         '''
         1. Area of total must be same as area of sub rectangles
         2. External corners must appear only once
@@ -77,7 +78,7 @@ class Solution:
 
         return True
 
-    def isRectangleCover2(self, rectangles: List[List[int]]) -> bool:
+    def isRectangleCover(self, rectangles: List[List[int]]) -> bool:
         '''
         1. Area of total must be same as area of sub rectangles
         2. External corners must appear only once
@@ -85,9 +86,11 @@ class Solution:
 
         Same as above but filtered with xor
         '''
+        def get_area():
+            return (y1 - y2) * (x1 - x2)
+
         area = 0
         corners = set()
-        get_area = lambda: (y1 - y2) * (x1 - x2)
 
         for x1, y1, x2, y2 in rectangles:
             area += get_area()

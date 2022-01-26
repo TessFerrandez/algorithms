@@ -13,11 +13,11 @@ class Node:
 def create_btree(data: List[int], index: int) -> Optional[Node]:
     pNode = None
     if index < len(data):
-        if data[index] == None:
+        if data[index] is None:
             return
         pNode = Node(data[index])
-        pNode.left = create_btree(data, 2 * index + 1) # [1, 3, 7, 15, ...]
-        pNode.right = create_btree(data, 2 * index + 2) # [2, 5, 12, 25, ...]
+        pNode.left = create_btree(data, 2 * index + 1)      # [1, 3, 7, 15, ...]
+        pNode.right = create_btree(data, 2 * index + 2)     # [2, 5, 12, 25, ...]
     return pNode
 
 

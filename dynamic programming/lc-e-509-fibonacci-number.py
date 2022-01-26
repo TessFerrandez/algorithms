@@ -21,7 +21,6 @@ class Solution:
         return result
 
 
-
 solution = Solution()
 assert solution.fib(2) == 1
 assert solution.fib(3) == 2

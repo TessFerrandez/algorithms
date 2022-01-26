@@ -27,7 +27,7 @@ class Solution:
                 curr_low += diff
                 if curr_low > upper:
                     return 0
-                curr_up = min(upper, curr_up + diff )
+                curr_up = min(upper, curr_up + diff)
             else:
                 curr_low = max(lower, curr_low + diff)
                 curr_up += diff

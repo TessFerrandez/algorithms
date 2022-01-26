@@ -85,7 +85,7 @@ def get_candidates(board, row, col):
 
 def search(board) -> bool:
     if is_valid_state(board):
-        return True # found solution
+        return True     # found solution
 
     for row_idx, row in enumerate(board):
         for col_idx, elm in enumerate(row):

@@ -15,9 +15,6 @@ Ex [4 5 6 7 | 2 3]
 
 We want to find the | point - the point where both the item to the left and to the right is higher
 '''
-from typing import List
-
-
 class Solution(object):
     def findMin(self, nums):
         n = len(nums)

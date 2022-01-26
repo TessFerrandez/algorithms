@@ -20,5 +20,6 @@ class Solution:
 
         return upper
 
+
 solution = Solution()
 print(solution.firstBadVersion(5))

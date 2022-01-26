@@ -47,7 +47,7 @@ def get_candidates(state, n):
 def search(state, solutions, n):
     if is_valid_state(state, n):
         solutions.append(state.copy())
-        return # we only want one solution
+        return  # we only want one solution
 
     for candidate in get_candidates(state, n):
         state.append(candidate)

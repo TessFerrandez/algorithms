@@ -1,7 +1,3 @@
-from collections import deque
-from typing import Set
-
-
 def explore_size(graph, key, visited):
     if key in visited:
         return 0

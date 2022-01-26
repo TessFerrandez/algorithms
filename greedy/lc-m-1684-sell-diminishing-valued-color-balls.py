@@ -12,7 +12,7 @@ from typing import List
 
 class Solution:
     def maxProfit(self, inventory: List[int], orders: int) -> int:
-        inventory.sort(reverse=True) # inventory high to low
+        inventory.sort(reverse=True)    # inventory high to low
         inventory.append(0)
 
         profit = 0
@@ -21,7 +21,7 @@ class Solution:
         for i in range(len(inventory) - 1):
             if inventory[i] > inventory[i + 1]:
                 if k * (inventory[i] - inventory[i + 1]) < orders:
-                    profit += k * (inventory[i] + inventory[i + 1] + 1) * (inventory[i] - inventory[i + 1]) // 2 # arithmic sum 
+                    profit += k * (inventory[i] + inventory[i + 1] + 1) * (inventory[i] - inventory[i + 1]) // 2    # arithmic sum
                     orders -= k * (inventory[i] - inventory[i + 1])
                 else:
                     q, r = divmod(orders, k)

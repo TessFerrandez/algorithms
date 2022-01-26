@@ -31,4 +31,3 @@ def optimal_schedule(L: List[int], T: List[int]) -> List[int]:
 
 assert optimal_schedule([3, 1, 2, 4], [4, 1000, 2, 5]) == [3, 4, 1, 2]
 assert optimal_schedule([1, 2, 3, 5, 6], [2, 4, 1, 3, 2]) == [3, 5, 4, 1, 2]
-

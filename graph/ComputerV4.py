@@ -110,53 +110,6 @@ class Computer():
                 return
 
 
-        while self.ip < self.max_ip and self.memory[self.ip] != 99:
-            op, args = self.get_instruction(self.ip)
-            if op == 1:
-                p1, p2, p3 = args
-                self.memory[p3] = p1 + p2
-                self.ip += 4
-            elif op == 2:
-                p1, p2, p3 = args
-                self.memory[p3] = p1 * p2
-                self.ip += 4
-            elif op == 3:
-                p1 = args[0]
-                if not self.inputs:
-                    raise InputInterrupt
-                self.memory[p1] = self.inputs.popleft()
-                self.ip += 2
-            elif op == 4:
-                p1 = args[0]
-                self.outputs.append(p1)
-                self.ip += 2
-                raise OutputInterrupt
-            elif op == 5:
-                p1, p2 = args
-                if p1 != 0:
-                    self.ip = p2
-                else:
-                    self.ip += 3
-            elif op == 6:
-                p1, p2 = args
-                if p1 == 0:
-                    self.ip = p2
-                else:
-                    self.ip += 3
-            elif op == 7:
-                p1, p2, p3 = args
-                self.memory[p3] = 1 if p1 < p2 else 0
-                self.ip += 4
-            elif op == 8:
-                p1, p2, p3 = args
-                self.memory[p3] = 1 if p1 == p2 else 0
-                self.ip += 4
-            elif op == 9:
-                p1 = args[0]
-                self.relative += p1
-                self.ip += 2
-
-
 def test_input_output() -> int:
     computer = Computer('3,0,4,0,99')
     computer.inputs.append(5)
@@ -170,13 +123,13 @@ def test_input_output() -> int:
 
 
 def test_initial_final(initial, final):
-        computer = Computer(initial)
-        try:
-            computer.run()
-        except OutputInterrupt:
-            print(computer.outputs.pop())
+    computer = Computer(initial)
+    try:
+        computer.run()
+    except OutputInterrupt:
+        print(computer.outputs.pop())
 
-        assert str(computer).startswith(final)
+    assert str(computer).startswith(final)
 
 
 def test_relative() -> int:

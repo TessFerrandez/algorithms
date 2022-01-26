@@ -61,7 +61,6 @@ class Solution:
 
         return -1
 
-
     def minJumps(self, arr: List[int]) -> int:
         n = len(arr)
         if n <= 1:

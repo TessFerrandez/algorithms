@@ -9,7 +9,7 @@ class Solution:
         nums = sorted(nums)
         low, high = 1, len(nums) - 2
 
-        while low <= len(nums) - 2 and nums[low] == nums[low -1]:
+        while low <= len(nums) - 2 and nums[low] == nums[low - 1]:
             low += 1
         while high >= 1 and nums[high] == nums[high + 1]:
             high -= 1

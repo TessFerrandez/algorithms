@@ -19,6 +19,14 @@ The judge will receive two inputs: a function_id (to determine which implementat
 The judge will call your findSolution and compare your results with the answer key.
 If your results match the answer key, your solution will be Accepted.
 '''
+from typing import List
+
+
+class CustomFunction:
+    def f(self, x: int, y: int) -> int:
+        return x * y
+
+
 class Solution:
     def findSolution(self, customfunction: 'CustomFunction', z: int) -> List[List[int]]:
         solutions = []
