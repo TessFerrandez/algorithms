@@ -1,7 +1,18 @@
 '''
-Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.
+Given an integer array nums, find the contiguous subarray (containing at least one number)
+which has the largest sum and return its sum.
 
 A subarray is a contiguous part of an array.
+
+ALGO:
+---------------
+Keep track of the current sum - if it is negative, set it to 0.
+Maximum current sum is the answer.
+
+For arrays with only negative numbers, the maximum value is the answer
+
+            [-2     1    -3     4    -1     2     1    -5     4]
+sum          -2(0)  1    -2(0)  4     3     5     6     1     5   <= max(6)
 '''
 from typing import List
 
