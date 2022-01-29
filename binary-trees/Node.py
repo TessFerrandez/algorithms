@@ -10,7 +10,7 @@ class Node:
         self.next = next
 
 
-def create_btree(data: List[int], index: int) -> Optional[Node]:
+def create_btree(data: List[int], index: int = 0) -> Optional[Node]:
     pNode = None
     if index < len(data):
         if data[index] is None:
@@ -21,8 +21,12 @@ def create_btree(data: List[int], index: int) -> Optional[Node]:
     return pNode
 
 
-def serialize(tree: Node) -> List:
+def serialize(tree: Node, nonull: bool = False) -> List:
+    if tree is None:
+        return []
+
     arr = []
+
     todo = deque([tree])
 
     while todo:
@@ -38,6 +42,10 @@ def serialize(tree: Node) -> List:
 
     while arr[-1] is None:
         arr = arr[:-1]
+
+    if nonull:
+        arr = [val for val in arr if val is None]
+
     return arr
 
 
