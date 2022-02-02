@@ -11,7 +11,8 @@ from typing import List
 
 
 class Solution:
-    def findCircleNum(self, isConnected: List[List[int]]) -> int:
+    # using DFS
+    def findCircleNum1(self, isConnected: List[List[int]]) -> int:
         def explore_province(graph, current, visited):
             if current in visited:
                 return False
@@ -45,7 +46,46 @@ class Solution:
 
         return count
 
+    # using union find
+    def findCircleNum(self, isConnected: List[List[int]]) -> int:
+        n = len(isConnected)
+
+        # build graph
+        root = [i for i in range(n)]
+        rank = [1] * n
+        count = n
+
+        def find(x):
+            if x == root[x]:
+                return x
+            root[x] = find(root[x])
+            return root[x]
+
+        # union (with optimized path compression)
+        def union(x, y):
+            rootX = find(x)
+            rootY = find(y)
+            if rootX != rootY:
+                if rank[rootX] > rank[rootY]:
+                    root[rootY] = rootX
+                elif rank[rootX] < rank[rootY]:
+                    root[rootX] = rootY
+                else:
+                    root[rootY] = rootX
+                    rank[rootX] += 1
+                return -1
+            return 0
+
+        # find number of provinces
+        for y in range(n):
+            for x in range(y + 1, n):
+                if isConnected[y][x] == 1:
+                    count += union(x, y)
+
+        return count
+
 
 solution = Solution()
+assert solution.findCircleNum([[1, 0, 0, 1], [0, 1, 1, 0], [0, 1, 1, 1], [1, 0, 1, 1]]) == 1
 assert solution.findCircleNum([[1, 1, 0], [1, 1, 0], [0, 0, 1]]) == 2
 assert solution.findCircleNum([[1, 0, 0], [0, 1, 0], [0, 0, 1]]) == 3
