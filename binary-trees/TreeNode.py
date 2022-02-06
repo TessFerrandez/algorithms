@@ -21,6 +21,8 @@ def create_btree(data: List[Optional[int]], index: int = 0) -> Optional[TreeNode
 
 
 def arr_from_btree(tree: TreeNode) -> List[int]:
+    if not tree:
+        return []
     arr = []
     todo = deque([tree])
 
