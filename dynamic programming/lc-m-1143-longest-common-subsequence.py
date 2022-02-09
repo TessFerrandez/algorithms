@@ -21,4 +21,3 @@ class Solution:
 
 solution = Solution()
 assert solution.longestCommonSubsequence('abcde', 'ace') == 3
-

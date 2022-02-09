@@ -1,9 +1,6 @@
 '''
 Given a string s consisting of only the characters 'a' and 'b', return true if every 'a' appears before every 'b' in the string. Otherwise, return false.
 '''
-from multiprocessing.sharedctypes import Value
-
-
 class Solution:
     def checkString(self, s: str) -> bool:
         a, b = 0, 0

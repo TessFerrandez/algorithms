@@ -22,7 +22,7 @@ class NumMatrix:
         top = self.range_sum[r1 - 1][c2]
         left = self.range_sum[r2][c1 - 1]
         top_left = self.range_sum[r1 - 1][c1 - 1]
-        return  full - top - left + top_left
+        return full - top - left + top_left
 
 
 mat = NumMatrix([[3, 0, 1, 4, 2], [5, 6, 3, 2, 1], [1, 2, 0, 1, 5], [4, 1, 0, 1, 7], [1, 0, 3, 0, 5]])

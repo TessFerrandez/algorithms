@@ -30,7 +30,6 @@ class Solution:
         return lowest_common_ancestor(root, min_node, max_node)
 
 
-
 solution = Solution()
 
 head = TreeNode(6)
