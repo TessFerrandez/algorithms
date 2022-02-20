@@ -9,6 +9,24 @@ class TreeNode:
         self.right = right
 
 
+def deserialize(data: List[Optional[int]]) -> Optional[TreeNode]:
+    if data is None:
+        return None
+
+    nodes = [None if val is None else TreeNode(val) for val in data]
+
+    kids = nodes[::-1]
+    root = kids.pop()
+    for node in nodes:
+        if node:
+            if kids:
+                node.left = kids.pop()
+            if kids:
+                node.right = kids.pop()
+
+    return root
+
+
 def create_btree(data: List[Optional[int]], index: int = 0) -> Optional[TreeNode]:
     pNode = None
     if index < len(data):
