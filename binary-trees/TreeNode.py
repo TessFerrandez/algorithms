@@ -8,9 +8,22 @@ class TreeNode:
         self.left = left
         self.right = right
 
+    def find(self, val):
+        if self.val == val:
+            return self
+        if self.left:
+            node = self.left.find(val)
+            if node:
+                return node
+        if self.right:
+            node = self.right.find(val)
+            if node:
+                return node
+        return None
+
 
 def deserialize(data: List[Optional[int]]) -> Optional[TreeNode]:
-    if data is None:
+    if data is None or data == []:
         return None
 
     nodes = [None if val is None else TreeNode(val) for val in data]

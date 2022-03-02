@@ -7,7 +7,7 @@ from typing import List
 
 
 class Solution:
-    def numIslands(self, grid: List[List[str]]) -> int:
+    def numIslands1(self, grid: List[List[str]]) -> int:
         def explore_land(graph, current, visited):
             if current in visited:
                 return False
@@ -37,6 +37,31 @@ class Solution:
         for land in graph:
             if explore_land(graph, land, visited):
                 count += 1
+
+        return count
+
+    def numIslands(self, grid: List[List[str]]) -> int:
+        if not grid:
+            return 0
+
+        rows, cols = len(grid), len(grid[0])
+
+        def dfs(row, col):
+            if row < 0 or row >= rows or col < 0 or col >= cols or grid[row][col] != '1':
+                return
+
+            grid[row][col] = '#'
+            dfs(row + 1, col)
+            dfs(row - 1, col)
+            dfs(row, col + 1)
+            dfs(row, col - 1)
+
+        count = 0
+        for row in range(rows):
+            for col in range(cols):
+                if grid[row][col] == '1':
+                    dfs(row, col)
+                    count += 1
 
         return count
 

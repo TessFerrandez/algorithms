@@ -19,7 +19,7 @@ def explore_size(graph, key, visited):
 
 
 class Solution:
-    def maxAreaOfIsland(self, grid: List[List[int]]) -> int:
+    def maxAreaOfIsland1(self, grid: List[List[int]]) -> int:
         graph = {}
 
         for y, row in enumerate(grid):
@@ -35,6 +35,18 @@ class Solution:
             max_size = max(max_size, size)
 
         return max_size
+
+    def maxAreaOfIsland(self, grid: List[List[int]]) -> int:
+        rows, cols = len(grid), len(grid[0])
+
+        def dfs(row, col):
+            if 0 <= row < rows and 0 <= col < cols and grid[row][col] != 0:
+                grid[row][col] = 0
+                return 1 + dfs(row - 1, col) + dfs(row + 1, col) + dfs(row, col - 1) + dfs(row, col + 1)
+            return 0
+
+        areas = [dfs(r, c) for r in range(rows) for c in range(cols) if grid[r][c] != 0]
+        return max(areas) if areas else 0
 
 
 grid = [[0,0,1,0,0,0,0,1,0,0,0,0,0],[0,0,0,0,0,0,0,1,1,1,0,0,0],[0,1,1,0,1,0,0,0,0,0,0,0,0],[0,1,0,0,1,1,0,0,1,0,1,0,0],[0,1,0,0,1,1,0,0,1,1,1,0,0],[0,0,0,0,0,0,0,0,0,0,1,0,0],[0,0,0,0,0,0,0,1,1,1,0,0,0],[0,0,0,0,0,0,0,1,1,0,0,0,0]]
