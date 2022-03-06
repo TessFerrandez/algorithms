@@ -17,10 +17,22 @@ class Solution:
                 return True
 
             visited.add(node.val)
-
             return find_target(node.left, k) or find_target(node.right, k)
-
         return find_target(root, k)
+
+    def findTarget2(self, root: Optional[TreeNode], k: int) -> bool:
+        def serialize(root):
+            if root is None:
+                return []
+            return serialize(root.left) + [root.val] + serialize(root.right)
+
+        nums = serialize(root)
+        for i, num in enumerate(nums):
+            target = k - num
+            if target in nums[i + 1:]:
+                return True
+
+        return False
 
 
 solution = Solution()
