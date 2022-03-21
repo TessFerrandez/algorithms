@@ -1,9 +1,14 @@
+from itertools import groupby
 from typing import List
 
 
 class Solution:
-    def countHillValley(self, nums: List[int]) -> int:
+    def countHillValley1(self, nums: List[int]) -> int:
         nums = [nums[i] for i in range(len(nums)) if i == 0 or i > 0 and nums[i] != nums[i - 1]]
+        return sum(1 for i in range(1, len(nums) - 1) if (nums[i] > nums[i - 1] and nums[i] > nums[i + 1]) or (nums[i] < nums[i - 1] and nums[i] < nums[i + 1]))
+
+    def countHillValley(self, nums: List[int]) -> int:
+        nums = [num for num, _ in groupby(nums)]
         return sum(1 for i in range(1, len(nums) - 1) if (nums[i] > nums[i - 1] and nums[i] > nums[i + 1]) or (nums[i] < nums[i - 1] and nums[i] < nums[i + 1]))
 
 

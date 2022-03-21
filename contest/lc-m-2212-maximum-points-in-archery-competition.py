@@ -2,7 +2,8 @@ from typing import List
 
 
 class Solution:
-    def maximumBobPoints(self, numArrows: int, aliceArrows: List[int]) -> List[int]:
+    # back tracking
+    def maximumBobPoints1(self, numArrows: int, aliceArrows: List[int]) -> List[int]:
         self.max_value, self.bobs_arrows = 0, []
 
         def dfs(arrows_left, current_result, bobs_arrows, current_point):
@@ -38,6 +39,28 @@ class Solution:
 
         dfs(numArrows, 0, [0 for _ in range(12)], 11)
         return self.bobs_arrows
+
+    # brute force
+    def maximumBobPoints(self, numArrows: int, aliceArrows: List[int]) -> List[int]:
+        best_score = -1
+        best_combo = []
+
+        for combo_bitmask in range(2 ** 12):
+            bobs_arrows = [0] * 12
+            score = 0
+
+            for point in range(12):
+                if combo_bitmask & (1 << point):
+                    bobs_arrows[point] = aliceArrows[point] + 1
+                    score += point
+
+            if sum(bobs_arrows) <= numArrows and score > best_score:
+                best_score = score
+                # place any "extra" arrows in an arbitrary position
+                bobs_arrows[-1] += numArrows - sum(bobs_arrows)
+                best_combo = bobs_arrows[:]
+
+        return best_combo
 
 
 solution = Solution()

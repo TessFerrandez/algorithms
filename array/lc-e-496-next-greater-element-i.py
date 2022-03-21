@@ -11,7 +11,8 @@ from typing import List
 
 
 class Solution:
-    def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:
+    # O (n * n)
+    def nextGreaterElement1(self, nums1: List[int], nums2: List[int]) -> List[int]:
         hash_map = {}
         n = len(nums2)
 
@@ -32,6 +33,26 @@ class Solution:
                 result.append(-1)
 
         return result
+
+    # O (n + m)
+    def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        num_map = {num: i for i, num in enumerate(nums1)}
+
+        answer = [-1] * len(nums1)
+        stack = []
+        for num in nums2:
+            while stack and stack[-1] < num:
+                val = stack.pop()
+                answer[num_map[val]] = num
+
+            if num in num_map:
+                stack.append(num)
+
+        while stack:
+            val = stack.pop()
+            answer[num_map[val]] = -1
+
+        return answer
 
 
 solution = Solution()
