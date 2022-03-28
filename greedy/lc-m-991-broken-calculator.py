@@ -15,7 +15,7 @@ class Solution:
             visited.add(start)
 
             if start - 1 > 0 and (start - 1) not in visited:
-                todo.append((steps + 1, start -1))
+                todo.append((steps + 1, start - 1))
             if start * 2 not in visited:
                 todo.append((steps + 1, start * 2))
 
