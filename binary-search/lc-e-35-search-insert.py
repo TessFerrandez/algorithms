@@ -2,18 +2,18 @@ from typing import List
 
 
 class Solution:
-    def searchInsert(self, nums: List[int], target: int) -> int:
+    def searchInsert1(self, nums: List[int], target: int) -> int:
         for i, num in enumerate(nums):
             if num >= target:
                 return i
 
         return len(nums)
 
-    def searchInsert2(self, nums: List[int], target: int) -> int:
+    def searchInsert(self, nums: List[int], target: int) -> int:
         low, high = 0, len(nums)
 
         while low < high:
-            mid = low + ((high - low) // 2)
+            mid = (low + high) // 2
 
             if nums[mid] < target:
                 low = mid + 1
