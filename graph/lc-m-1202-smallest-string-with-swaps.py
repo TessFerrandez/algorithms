@@ -10,7 +10,7 @@ from typing import List
 
 
 class Solution:
-    def smallestStringWithSwaps(self, s: str, pairs: List[List[int]]) -> str:
+    def smallestStringWithSwaps1(self, s: str, pairs: List[List[int]]) -> str:
         class UnionFind:
             def __init__(self, n) -> None:
                 self.root = list(range(n))
@@ -38,6 +38,35 @@ class Solution:
 
         for i in range(len(s)):
             result.append(graph[uf.find(i)].pop())
+
+        return ''.join(result)
+
+    def smallestStringWithSwaps(self, s: str, pairs: List[List[int]]) -> str:
+        n = len(s)
+        roots = list(range(n))
+
+        def union(node1, node2):
+            roots[find(node1)] = find(node2)
+
+        def find(node):
+            if node != roots[node]:
+                roots[node] = find(roots[node])
+            return roots[node]
+
+        result = []
+        graph = defaultdict(list)
+
+        for node1, node2 in pairs:
+            union(node1, node2)
+
+        for i in range(n):
+            graph[find(i)].append(s[i])
+
+        for group in graph.keys():
+            graph[group].sort(reverse=True)
+
+        for i in range(n):
+            result.append(graph[find(i)].pop())
 
         return ''.join(result)
 
