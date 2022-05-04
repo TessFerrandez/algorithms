@@ -1,8 +1,9 @@
+from bisect import bisect_left
 from typing import List
 
 
 class Solution:
-    def findTheDistanceValue(self, arr1: List[int], arr2: List[int], d: int) -> int:
+    def findTheDistanceValue1(self, arr1: List[int], arr2: List[int], d: int) -> int:
         def searchInsert(nums: List[int], target: int) -> int:
             low, high = 0, len(nums)
 
@@ -28,6 +29,18 @@ class Solution:
             elif i == n and arr2[-1] + d < num:
                 count += 1
             elif arr2[i - 1] + d < num and num + d < arr2[i]:
+                count += 1
+
+        return count
+
+    def findTheDistanceValue(self, arr1: List[int], arr2: List[int], d: int) -> int:
+        arr2.sort()
+        arr2 = [-2000] + arr2 + [2000]
+
+        count = 0
+        for num in arr1:
+            i = bisect_left(arr2, num)
+            if arr2[i - 1] + d < num and num + d < arr2[i]:
                 count += 1
 
         return count
