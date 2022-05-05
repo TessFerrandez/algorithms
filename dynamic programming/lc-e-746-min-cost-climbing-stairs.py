@@ -5,6 +5,7 @@ You can either start from the step with index 0, or the step with index 1.
 
 Return the minimum cost to reach the top of the floor.
 '''
+from functools import cache
 from typing import List
 
 
@@ -20,7 +21,7 @@ class Solution:
 
         return min(dp[-2], dp[-1])
 
-    def minCostClimbingStairs(self, cost: List[int]) -> int:
+    def minCostClimbingStairs2(self, cost: List[int]) -> int:
         stairs = len(cost)
         if stairs <= 1:
             return 0
@@ -31,6 +32,25 @@ class Solution:
             prev0, prev1 = prev1, current
 
         return min(prev0, prev1)
+
+    # top down (template)
+    def minCostClimbingStairs3(self, cost: List[int]) -> int:
+        @cache
+        def min_cost(step):
+            if step <= 1:
+                return 0
+            return min(min_cost(step - 1) + cost[step - 1], min_cost(step - 2) + cost[step - 2])
+
+        return min_cost(len(cost))
+
+    # bottom up (template)
+    def minCostClimbingStairs(self, cost: List[int]) -> int:
+        min_cost = {0: 0, 1: 0}
+
+        for step in range(2, len(cost) + 1):
+            min_cost[step] = min(min_cost[step - 1] + cost[step - 1], min_cost[step - 2] + cost[step - 2])
+
+        return min_cost[len(cost)]
 
 
 solution = Solution()
