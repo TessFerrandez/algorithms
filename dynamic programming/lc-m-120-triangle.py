@@ -16,11 +16,12 @@ Explanation: The triangle looks like:
 
 The minimum path sum from top to bottom is 2 + 3 + 5 + 1 = 11 (underlined above).
 '''
+from functools import cache
 from typing import List
 
 
 class Solution:
-    def minimumTotal(self, triangle: List[List[int]]) -> int:
+    def minimumTotal1(self, triangle: List[List[int]]) -> int:
         # for each num in current row - min value is current_val + min(i, i + 1) in next row
         dp = [0 for _ in range(len(triangle) + 1)]
 
@@ -30,6 +31,17 @@ class Solution:
                 dp[i] = num + min(dp[i], dp[i + 1])
 
         return dp[0]
+
+    def minimumTotal(self, triangle: List[List[int]]) -> int:
+        rows = len(triangle)
+
+        @cache
+        def min_path(row, col):
+            if row == rows - 1:
+                return triangle[row][col]
+            return triangle[row][col] + min(min_path(row + 1, col), min_path(row + 1, col + 1))
+
+        return min_path(0, 0)
 
 
 solution = Solution()

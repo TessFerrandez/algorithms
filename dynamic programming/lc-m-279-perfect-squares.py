@@ -25,17 +25,17 @@ class Solution:
         if n <= 0:
             return 0
 
-        dp = [0]
-        while len(dp) <= n:
-            m, i, count_squares = len(dp), 1, 10 ** 4
+        min_squares = [0]
+        while len(min_squares) <= n:
+            num, i, count_squares = len(min_squares), 1, 10 ** 4
 
-            while i * i <= m:
-                count_squares = min(count_squares, dp[m - i * i] + 1)
+            while i * i <= num:
+                count_squares = min(count_squares, min_squares[num - i * i] + 1)
                 i += 1
 
-            dp.append(count_squares)
+            min_squares.append(count_squares)
 
-        return dp[n]
+        return min_squares[n]
 
     # math
     def numSquares(self, n: int) -> int:
