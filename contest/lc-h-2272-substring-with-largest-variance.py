@@ -7,7 +7,7 @@ class Solution:
         chars = list(set(s))
 
         for i in range(len(chars)):
-            for j in range(i+1, len(chars)):
+            for j in range(i + 1, len(chars)):
                 ch1, ch2 = chars[i], chars[j]
 
                 diff = 0
