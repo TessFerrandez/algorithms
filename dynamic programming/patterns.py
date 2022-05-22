@@ -5,8 +5,6 @@
 4. DP on strings
 5. Decision Making
 '''
-
-
 # PROBLEM: Min/Max path to reach target
 # APPROACH: Chose min path among all possible paths before current state
 # then add current cost
@@ -46,8 +44,6 @@ def minCostClimbingStairs(stairs):
 
 assert minCostClimbingStairs([10, 15, 20]) == 15
 assert minCostClimbingStairs([1, 100, 1, 1, 1, 100, 1, 1, 100, 1]) == 6
-
-
 
 
 # longest-increasing-subsequence
