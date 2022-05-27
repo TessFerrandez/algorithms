@@ -3,11 +3,12 @@ Given an integer array nums, return the length of the longest strictly increasin
 
 A subsequence is a sequence that can be derived from an array by deleting some or no elements without changing the order of the remaining elements. For example, [3,6,2,7] is a subsequence of the array [0,3,1,6,2,2,7].
 '''
+from bisect import bisect_left
 from typing import List
 
 
 class Solution:
-    def lengthOfLIS(self, nums: List[int]) -> int:
+    def lengthOfLIS1(self, nums: List[int]) -> int:
         n = len(nums)
         dp = [0] * n
 
@@ -19,6 +20,24 @@ class Solution:
             dp[i] = 1 + max_len
 
         return max(dp)
+
+    def lengthOfLIS2(self, nums: List[int]) -> int:
+        dp = []
+
+        for num in nums:
+            index = bisect_left(dp, num)
+            if index == len(dp):
+                dp.append(num)
+            else:
+                dp[index] = num
+
+        return len(dp)
+
+    def lengthOfLIS(self, nums: List[int]) -> int:
+        dp = [10 ** 10] * (len(nums) + 1)
+        for num in nums:
+            dp[bisect_left(dp, num)] = num
+        return dp.index(10 ** 10)
 
 
 solution = Solution()
