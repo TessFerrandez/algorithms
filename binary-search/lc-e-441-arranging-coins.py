@@ -1,5 +1,5 @@
 class Solution:
-    def arrangeCoins(self, n: int) -> int:
+    def arrangeCoins1(self, n: int) -> int:
         low, high = 0, n
 
         while low <= high:
@@ -15,5 +15,7 @@ class Solution:
 
 
 solution = Solution()
+assert solution.arrangeCoins(1) == 1
+assert solution.arrangeCoins(3) == 2
 assert solution.arrangeCoins(5) == 2
 assert solution.arrangeCoins(8) == 3

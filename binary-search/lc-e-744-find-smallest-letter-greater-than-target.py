@@ -3,24 +3,19 @@ from typing import List
 
 class Solution:
     def nextGreatestLetter(self, letters: List[str], target: str) -> str:
-        def searchInsert(letters: List[str], target: str) -> int:
-            low, high = 0, len(letters)
+        low, high = 0, len(letters)
 
-            while low < high:
-                mid = (low + high) // 2
+        while low < high:
+            mid = (low + high) // 2
 
-                if letters[mid] <= target:
-                    low = mid + 1
-                else:
-                    high = mid
+            if letters[mid] > target:
+                high = mid
+            else:
+                low = mid + 1
 
-            return low
-
-        n = len(letters)
-        insert_point = searchInsert(letters, target)
-        if insert_point == n:
+        if low == len(letters):
             return letters[0]
-        return letters[insert_point]
+        return letters[low]
 
 
 solution = Solution()

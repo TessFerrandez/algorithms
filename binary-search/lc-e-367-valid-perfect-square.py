@@ -31,6 +31,21 @@ class Solution:
 
         return False
 
+    # binary template
+    def isPerfectSquare(self, num: int) -> bool:
+        low, high = 0, num
+
+        while low < high:
+            mid = (low + high) // 2
+            if mid * mid == num:
+                return True
+            if mid * mid >= num:
+                high = mid
+            else:
+                low = mid + 1
+
+        return low * low == num
+
     # bitwise (0.45)
     def isPerfectSquare4(self, num: int) -> bool:
         root = 0
@@ -44,7 +59,7 @@ class Solution:
         return root * root == num
 
     # newton (0.34)
-    def isPerfectSquare(self, num: int) -> bool:
+    def isPerfectSquare5(self, num: int) -> bool:
         r = num
         while r * r > num:
             r = (r + num / r) // 2
