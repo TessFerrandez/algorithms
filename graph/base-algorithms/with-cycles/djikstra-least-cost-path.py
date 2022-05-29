@@ -1,6 +1,7 @@
 from queue import PriorityQueue
 
 
+# see contest/lc-h-2290... for better implementation with heap
 def djikstra(graph, start):
     visited = set()
     previous = {node: None for node in graph}
