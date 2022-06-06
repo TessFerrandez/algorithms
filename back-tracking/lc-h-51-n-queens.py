@@ -2,7 +2,7 @@
 Back tracking
 
 place n queens on a board such that they
-don't attack eachother
+don't attack each other
 
 return all possible solutions
 
@@ -66,10 +66,13 @@ def state_to_strings(state, n):
     return result
 
 
-def solve_queens(n: int) -> List[List[str]]:
-    solutions, state = [], []
-    search(state, solutions, n)
-    return [state_to_strings(state, n) for state in solutions]
+class Solution:
+    def solveNQueens(self, n: int) -> List[List[str]]:
+        solutions, state = [], []
+        search(state, solutions, n)
+        return [state_to_strings(state, n) for state in solutions]
 
 
-print(solve_queens(4))
+solution = Solution()
+assert solution.solveNQueens(4) == [['.Q..', '...Q', 'Q...', '..Q.'], ['..Q.', 'Q...', '...Q', '.Q..']]
+assert solution.solveNQueens(1) == [['Q']]
