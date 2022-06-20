@@ -48,7 +48,7 @@ def build_first_list():
     nodes[8].child = nodes[11]
     return nodes[1]
 
+
 solution = Solution()
 first = build_first_list()
 after = solution.flatten(first)
-print("hello")
