@@ -4,13 +4,17 @@ A decimal number is called deci-binary if each of its digits is either 0 or 1 wi
 Given a string n that represents a positive decimal integer, return the minimum number of positive deci-binary numbers needed so that they sum up to n.
 '''
 class Solution:
-    def minPartitions(self, n: str) -> int:
+    def minPartitions1(self, n: str) -> int:
         min_partitions = 0
 
         for digit in n:
             min_partitions = max(min_partitions, int(digit))
 
         return min_partitions
+
+    def minPartitions(self, n: str) -> int:
+        digits = [int(d) for d in list(n)]
+        return max(digits)
 
 
 solution = Solution()

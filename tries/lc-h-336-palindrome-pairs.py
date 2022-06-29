@@ -18,17 +18,12 @@ class Trie:
 
 
 def is_palindrome(word):
-    i, j = 0, len(word) - 1
-    while i <= j:
-        if word[i] != word[j]:
-            return False
-        i += 1
-        j -= 1
-    return True
+    return word == word[::-1]
 
 
 class Solution:
-    def palindromePairs(self, words):
+    # TLE
+    def palindromePairs1(self, words):
         '''Find pairs of palindromes in O(n*k^2) time and O(n*k) space.'''
         root = Trie()
         res = []
@@ -60,9 +55,31 @@ class Solution:
                     res.append([j, i])
         return res
 
+    def palindromePairs(self, words):
+        def is_palindrome(word):
+            return word == word[::-1]
+
+        words = {word: i for i, word in enumerate(words)}
+        valid_pairs = []
+        for word, k in words.items():
+            n = len(word)
+            for j in range(n + 1):
+                prefix, suffix = word[:j], word[j:]
+
+                if is_palindrome(prefix):
+                    back = suffix[::-1]
+                    if back != word and back in words:
+                        valid_pairs.append([words[back], k])
+
+                if j != n and is_palindrome(suffix):
+                    back = prefix[::-1]
+                    if back != word and back in words:
+                        valid_pairs.append([k, words[back]])
+
+        return valid_pairs
+
 
 solution = Solution()
-
-assert solution.palindromePairs(["abcd","dcba","lls","s","sssll"]) == [[0, 1], [1, 0], [2, 4], [3, 2]]
-assert solution.palindromePairs(["bat","tab","cat"]) == [[0,1],[1,0]]
+assert solution.palindromePairs(["abcd","dcba","lls","s","sssll"]) == [[1, 0], [0, 1], [3, 2], [2, 4]]
+assert solution.palindromePairs(["bat","tab","cat"]) == [[1,0], [0,1]]
 assert solution.palindromePairs(["a",""]) == [[0,1],[1,0]]
