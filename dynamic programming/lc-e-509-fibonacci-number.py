@@ -5,12 +5,13 @@ F(0) = 0, F(1) = 1
 F(n) = F(n - 1) + F(n - 2), for n > 1.
 Given n, calculate F(n).
 '''
+from functools import cache
+
+
 class Solution:
     def fib(self, n: int) -> int:
-        if n == 0:
-            return 0
-        if n == 1:
-            return 1
+        if n <= 1:
+            return n
 
         prev0, prev1 = 0, 1
         result = 0
@@ -19,6 +20,25 @@ class Solution:
             prev0, prev1 = prev1, result
 
         return result
+
+    def fib2(self, n):
+        if n <= 1:
+            return n
+        return self.fib(n - 1) + self.fib(n - 2)
+
+    @cache
+    def fib3(self, n):
+        if n <= 1:
+            return n
+        return self.fib(n - 1) + self.fib(n - 2)
+
+    def fib4(self, n):
+        fibs = [0, 1]
+
+        for i in range(2, n + 1):
+            fibs.append(fibs[i - 1] + fibs[i - 2])
+
+        return fibs[n]
 
 
 solution = Solution()

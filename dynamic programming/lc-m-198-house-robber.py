@@ -48,7 +48,7 @@ class Solution:
         return cache[len(nums)]
 
     # iterative + memo (less space)
-    def rob(self, nums: List[int]) -> int:
+    def rob4(self, nums: List[int]) -> int:
         if len(nums) == 0:
             return 0
 
@@ -60,8 +60,16 @@ class Solution:
 
         return prev1
 
+    def rob(self, loot: List[int]) -> int:
+        houses = len(loot)
+        max_loot = [0] * (houses + 2)
+
+        for house_nr in range(houses - 1, -1, -1):
+            max_loot[house_nr] = max(loot[house_nr] + max_loot[house_nr + 2], max_loot[house_nr + 1])
+        return max_loot[0]
+
 
 solution = Solution()
-print(solution.rob([1, 2, 3, 1]))
-print(solution.rob([2, 7, 9, 3, 1]))
-print(solution.rob([183,219,57,193,94,233,202,154,65,240,97,234,100,249,186,66,90,238,168,128,177,235,50,81,185,165,217,207,88,80,112,78,135,62,228,247,211]))
+assert solution.rob([1, 2, 3, 1]) == 4
+assert solution.rob([2, 7, 9, 3, 1]) == 12
+assert solution.rob([183,219,57,193,94,233,202,154,65,240,97,234,100,249,186,66,90,238,168,128,177,235,50,81,185,165,217,207,88,80,112,78,135,62,228,247,211]) == 3365
