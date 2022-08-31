@@ -51,7 +51,7 @@ class Solution:
         if self.count_islands(grid_copy, rows, cols) != 1:
             return 0
 
-		# try to remove any land any see if it works
+        # try to remove any land any see if it works
         for row in range(rows):
             for col in range(cols):
                 if grid[row][col] == 0:
@@ -62,7 +62,7 @@ class Solution:
                 if self.count_islands(grid_copy, rows, cols) != 1:
                     return 1
 
-		# well then just return 2
+        # well then just return 2
         return 2
 
 
