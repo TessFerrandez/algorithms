@@ -27,9 +27,9 @@ class Solution:
             if op == m:
                 return 0
 
-            l = nums[left] * multipliers[op] + dp(op + 1, left + 1)
-            r = nums[(n - 1) - (op - left)] * multipliers[op] + dp(op + 1, left)
-            return max(l, r)
+            left_arr = nums[left] * multipliers[op] + dp(op + 1, left + 1)
+            right_arr = nums[(n - 1) - (op - left)] * multipliers[op] + dp(op + 1, left)
+            return max(left_arr, right_arr)
 
         # Zero operation done in the beginning
         return dp(0, 0)

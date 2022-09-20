@@ -4,7 +4,7 @@ from TreeNode import TreeNode, deserialize
 
 
 class Solution:
-    def pseudoPalindromicPaths (self, root: Optional[TreeNode]) -> int:
+    def pseudoPalindromicPaths(self, root: Optional[TreeNode]) -> int:
         num_count = defaultdict(int)
 
         def is_palindrome():
