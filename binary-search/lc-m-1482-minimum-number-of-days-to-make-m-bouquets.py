@@ -2,29 +2,34 @@ from typing import List
 
 
 class Solution:
-    def minDays(self, bloomDay: List[int], m: int, k: int) -> int:
-        def is_valid(day):
-            bouquets, flowers = 0, 0
-            for bloom in bloomDay:
-                if bloom > day:
+    def is_valid(self, bloomDay: List[int], m: int, k: int, day: int) -> bool:
+        bouquets, flowers = 0, 0
+        for bloom in bloomDay:
+            if bloom > day:
+                flowers = 0
+            else:
+                flowers += 1
+                if flowers == k:
+                    bouquets += 1
                     flowers = 0
-                else:
-                    bouquets += (flowers + 1) // k
-                    flowers = (flowers + 1) % k
-            return bouquets >= m
+        return bouquets >= m
 
-        if len(bloomDay) < m * k:
+    def minDays(self, bloomDay: List[int], m: int, k: int) -> int:
+
+        if m * k > len(bloomDay):
             return -1
 
-        low, high = 1, max(bloomDay)
-        while low < high:
-            mid = low + (high - low) // 2
-            if is_valid(mid):
-                high = mid
-            else:
-                low = mid + 1
+        start = 0
+        end = max(bloomDay)
 
-        return low
+        while start < end:
+            mid = start + (end - start) // 2
+            if self.is_valid(bloomDay, m, k, mid):
+                end = mid
+            else:
+                start = mid + 1
+
+        return start
 
 
 solution = Solution()
